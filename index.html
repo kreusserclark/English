@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English I Class</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+
+    /* ===== TV + SLIDESHOW CONTAINER ===== */
+    .slideshow-container {
+        width: 100%;
+        max-width: 900px;   /* Safe Canvas width */
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .mySlides img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* Fade animation */
+    .fade {
+        animation: fade 1.5s;
+    }
+
+    @keyframes fade {
+        from { opacity: .4; }
+        to { opacity: 1; }
+    }
+
+    /* ===== THUMBNAILS ===== */
+    .thumbnails {
+        display: flex;
+        justify-content: space-between; /* forces exact spacing */
+        align-items: center;
+        max-width: 900px;
+        margin: 6px auto 0;
+    }
+
+    .thumbnails img {
+        width: 78px;   /* tuned for exactly 8 */
+        cursor: pointer;
+        border: 2px solid transparent;
+    }
+
+    .thumbnails img:hover {
+        border-color: #717171;
+    }
+
+    /* ===== PLAY / PAUSE (BOBCAT) ===== */
+    .controls {
+        margin-top: 4px;
+    }
+
+    .controls img {
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- ===== SLIDESHOW / TV ===== -->
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+        <img src="./images/welcomeeng.gif" alt="Welcome">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="./images/video.gif" alt="Video">
+    </div>
+
+    <div class="mySlides fade">
+        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=LUmWRm1kPE2UZWxaNvMaFk2TGSm4s-xLs5IgA37w66BUMU82UUtNM1BWNVJXM1BGME9TQU1CN1ZEMC4u" target="_blank">
+        <img src="./images/family.gif" alt="Official Announcements">
+        </a>
+    </div>
+
+    <div class="mySlides fade">
+        <img src="./images/ixl.gif" alt="Announcements">
+	</div>
+
+    <div class="mySlides fade">
+        <img src="./images/announce.gif" alt="Daily">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="./images/testing.gif" alt="Agenda">
+    </div>
+
+    <div class="mySlides fade">
+         <a href="https://tvah.k12.com/academic-calendar/" target="_blank">
+         <img src="./images/calendar.gif" alt="Academic Calendar">
+		 </a>
+    </div>
+	
+	<div class="mySlides fade">
+         <img src="./images/class.gif" alt="Class of 2025">
+
+    </div>
+
+</div>
+
+<!-- ===== THUMBNAILS (ALWAYS VISIBLE) ===== -->
+<div class="thumbnails">
+    <img src="./images/thumbnails/welcome-thumbnail.gif" onclick="currentSlide(1)">
+    <img src="./images/thumbnails/video-thumbnail.gif" onclick="currentSlide(2)">
+    <img src="./images/thumbnails/family-thumbnail.gif" onclick="currentSlide(3)">
+    <img src="./images/thumbnails/ixl-thumbnail.gif" onclick="currentSlide(4)">
+    <img src="./images/thumbnails/announce-thumbnail.gif" onclick="currentSlide(5)">
+    <img src="./images/thumbnails/testing-thumbnail.gif" onclick="currentSlide(6)">
+    <img src="./images/thumbnails/calendar-thumbnail.gif" onclick="currentSlide(7)">
+    <img src="./images/thumbnails/class-thumbnail.gif" onclick="currentSlide(8)">    
+</div>
+
+<!-- ===== BOBCAT CONTROL (BELOW THUMBNAILS) ===== -->
+<div class="controls">
+    <img id="playPlay"
+         src="./images/pause-button.gif"
+         onclick="toggleSlideshow()"
+         title="Play / Pause">
+</div>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+let slideIndex = 0;
+let isPlaying = true;
+let slideInterval;
+
+function showSlides() {
+    let slides = document.getElementsByClassName("mySlides");
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    slideIndex++;
+    if (slideIndex > slides.length) {
+        slideIndex = 1;
+    }
+
+    slides[slideIndex - 1].style.display = "block";
+}
+
+function startSlideshow() {
+    showSlides();
+    slideInterval = setInterval(showSlides, 5000);
+}
+
+function toggleSlideshow() {
+    if (isPlaying) {
+        clearInterval(slideInterval);
+        isPlaying = false;
+    } else {
+        startSlideshow();
+        isPlaying = true;
+    }
+}
+
+function currentSlide(n) {
+    slideIndex = n - 1;
+    showSlides();
+    if (isPlaying) {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(showSlides, 5000);
+    }
+}
+
+/* Start immediately – no Canvas delay */
+startSlideshow();
+</script>
+
+</body>
+</html>
