@@ -19,7 +19,7 @@
     /* ===== TV + SLIDESHOW CONTAINER ===== */
     .slideshow-container {
         width: 100%;
-        max-width: 900px;   /* Safe Canvas width */
+        max-width: 900px;
         margin: 0 auto;
         position: relative;
     }
@@ -32,6 +32,7 @@
         width: 100%;
         height: auto;
         display: block;
+        cursor: pointer;
     }
 
     /* Fade animation */
@@ -47,14 +48,14 @@
     /* ===== THUMBNAILS ===== */
     .thumbnails {
         display: flex;
-        justify-content: space-between; /* forces exact spacing */
+        justify-content: space-between;
         align-items: center;
         max-width: 900px;
         margin: 6px auto 0;
     }
 
     .thumbnails img {
-        width: 78px;   /* tuned for exactly 8 */
+        width: 78px;
         cursor: pointer;
         border: 2px solid transparent;
     }
@@ -84,7 +85,7 @@
     </div>
 
     <div class="mySlides fade">
-        <img src="./images/video.gif" alt="Video">
+        <img src="./images/video.gif" alt="Video" id="videoSlide">
     </div>
 
     <div class="mySlides fade">
@@ -113,7 +114,6 @@
 	
 	<div class="mySlides fade">
          <img src="./images/class.gif" alt="Class of 2025">
-
     </div>
 
 </div>
@@ -182,8 +182,19 @@ function currentSlide(n) {
     }
 }
 
-/* Start immediately – no Canvas delay */
+/* Start immediately */
 startSlideshow();
+
+/* ===== VIDEO POPUP ===== */
+const videoSlide = document.getElementById("videoSlide");
+
+videoSlide.addEventListener("click", () => {
+    window.open(
+        './videos/english.mp4',
+        'videoWindow',
+        'width=640,height=360,resizable=yes'
+    );
+});
 </script>
 
 </body>
