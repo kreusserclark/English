@@ -217,10 +217,10 @@ function startSlideshow() {
         showSlides();
 
         if (isPlaying) {
-            slideInterval = setTimeout(nextSlide, slideIndex === 1 ? 15000 : 5000);
+            slideInterval = setTimeout(nextSlide, slideIndex === 1 ? 10000 : 5000);
         }
 
-    }, slideIndex === 1 ? 15000 : 5000);
+    }, slideIndex === 1 ? 10000 : 5000);
 }
 function currentSlide(n) {
 
@@ -235,10 +235,10 @@ function currentSlide(n) {
             showSlides();
 
             if (isPlaying) {
-                slideInterval = setTimeout(nextSlide, slideIndex === 1 ? 15000 : 5000);
+                slideInterval = setTimeout(nextSlide, slideIndex === 1 ? 10000 : 5000);
             }
 
-        }, slideIndex === 1 ? 15000 : 5000);
+        }, slideIndex === 1 ? 10000 : 5000);
     }
 }
 
