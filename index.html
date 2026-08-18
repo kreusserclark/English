@@ -26,6 +26,7 @@
 
     .mySlides {
         display: none;
+        position: relative;
     }
 
     .mySlides img {
@@ -35,23 +36,44 @@
         cursor: pointer;
     }
 
+    /* ===== CIRCULAR TEACHER VIDEO ===== */
+    .teacher-video {
+        position: absolute;
+        left: 5%;
+        bottom: 7%;
+        width: 16%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #6f2dbd;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        z-index: 10;
+    }
+
     /* Fade animation */
     .fade {
         animation: fade 1.5s;
     }
 
     @keyframes fade {
-        from { opacity: .4; }
-        to { opacity: 1; }
+        from {
+            opacity: .4;
+        }
+
+        to {
+            opacity: 1;
+        }
     }
 
     /* ===== THUMBNAILS ===== */
     .thumbnails {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 900px;
-        margin: 6px auto 0;
+        display: flex; 
+    justify-content: center; 
+    gap: 24px;
+    align-items: center; 
+    max-width: 900px; 
+    margin: 6px auto 0; 
     }
 
     .thumbnails img {
@@ -80,81 +102,100 @@
 <!-- ===== SLIDESHOW / TV ===== -->
 <div class="slideshow-container">
 
+    <!-- ===== SLIDE 1: WELCOME ===== -->
     <div class="mySlides fade">
+
         <img src="./images/welcomeeng.gif" alt="Welcome">
+
+        <!-- Circular teacher video -->
+        <video
+            id="teacherVideo"
+            class="teacher-video"
+            src="./videos/english.mp4"
+            playsinline
+            preload="metadata">
+        </video>
+
     </div>
 
+
+    <!-- ===== SLIDE 2: Vision/Mission ===== -->
     <div class="mySlides fade">
-        <img src="./images/video.gif" alt="Video" id="videoSlide">
+        <img src="./images/announce.gif" alt="Announce" id="videoSlide">
     </div>
 
+
+    <!-- ===== SLIDE 3: FAMILY / AGENDA ===== -->
     <div class="mySlides fade">
-        <a href="https://forms.office.com/Pages/ResponsePage.aspx?id=LUmWRm1kPE2UZWxaNvMaFk2TGSm4s-xLs5IgA37w66BUMU82UUtNM1BWNVJXM1BGME9TQU1CN1ZEMC4u" target="_blank">
-        <img src="./images/family.gif" alt="Official Announcements">
+        <img src="./images/calendar.gif" alt="Official Announcements">
         </a>
     </div>
 
-    <div class="mySlides fade">
-        <a href="https://www.canva.com/design/DAG7mcb0xaQ/CdVU6XLp5CfF5g3-JJyUkA/view" target="_blank">
-		<img src="./images/ixl.gif" alt="Announcements">
-		</a>
-	</div>
 
+    <!-- ===== SLIDE 4: IXL ===== -->
     <div class="mySlides fade">
-        <img src="./images/announce.gif" alt="Daily">
+        <img src="./images/ixl.gif" alt="Announcements">
     </div>
 
+
+    <!-- ===== SLIDE 5: CTE Courses ===== -->
     <div class="mySlides fade">
-        <a href="https://app.smore.com/n/b7yfp" target="_blank">
-		<img src="./images/testing.gif" alt="Agenda">
-		</a>
+        <img src="./images/class.gif" alt="Daily">
     </div>
 
-    <div class="mySlides fade">
-         <a href="https://tvah.k12.com/academic-calendar/" target="_blank">
-         <img src="./images/calendar.gif" alt="Academic Calendar">
-		 </a>
-    </div>
-	
-	<div class="mySlides fade">
-         <img src="./images/class.gif" alt="Class of 2025">
-    </div>
 
-</div>
 
 <!-- ===== THUMBNAILS (ALWAYS VISIBLE) ===== -->
 <div class="thumbnails">
-    <img src="./images/thumbnails/welcome-thumbnail.gif" onclick="currentSlide(1)">
-    <img src="./images/thumbnails/video-thumbnail.gif" onclick="currentSlide(2)">
-    <img src="./images/thumbnails/family-thumbnail.gif" onclick="currentSlide(3)">
-    <img src="./images/thumbnails/ixl-thumbnail.gif" onclick="currentSlide(4)">
-    <img src="./images/thumbnails/announce-thumbnail.gif" onclick="currentSlide(5)">
-    <img src="./images/thumbnails/testing-thumbnail.gif" onclick="currentSlide(6)">
-    <img src="./images/thumbnails/calendar-thumbnail.gif" onclick="currentSlide(7)">
-    <img src="./images/thumbnails/class-thumbnail.gif" onclick="currentSlide(8)">    
+
+    <img src="./images/thumbnails/welcome-thumbnail.gif"
+         onclick="currentSlide(1)">
+
+    <img src="./images/thumbnails/announce-thumbnail.gif"
+         onclick="currentSlide(2)">
+
+    <img src="./images/thumbnails/calendar-thumbnail.gif"
+         onclick="currentSlide(3)">
+
+    <img src="./images/thumbnails/ixl-thumbnail.gif"
+         onclick="currentSlide(4)">
+
+    <img src="./images/thumbnails/class-thumbnail.gif"
+         onclick="currentSlide(5)">
 </div>
+
 
 <!-- ===== BOBCAT CONTROL (BELOW THUMBNAILS) ===== -->
 <div class="controls">
+
     <img id="playPlay"
          src="./images/pause-button.gif"
          onclick="toggleSlideshow()"
          title="Play / Pause">
+
 </div>
+
 
 <!-- ===== SCRIPT ===== -->
 <script>
+
 let slideIndex = 0;
 let isPlaying = true;
 let slideInterval;
 
+
+/* ===== SHOW SLIDES ===== */
+
 function showSlides() {
+
     let slides = document.getElementsByClassName("mySlides");
+
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
 
     slideIndex++;
+
     if (slideIndex > slides.length) {
         slideIndex = 1;
     }
@@ -162,47 +203,120 @@ function showSlides() {
     slides[slideIndex - 1].style.display = "block";
 }
 
+
+/* ===== START SLIDESHOW ===== */
+
 function startSlideshow() {
+
     showSlides();
-    slideInterval = setInterval(showSlides, 5000);
-}
 
-function toggleSlideshow() {
-    if (isPlaying) {
-        clearInterval(slideInterval);
-        isPlaying = false;
-    } else {
-        startSlideshow();
-        isPlaying = true;
-    }
-}
+    clearTimeout(slideInterval);
 
+    slideInterval = setTimeout(function nextSlide() {
+
+        showSlides();
+
+        if (isPlaying) {
+            slideInterval = setTimeout(nextSlide, slideIndex === 1 ? 15000 : 5000);
+        }
+
+    }, slideIndex === 1 ? 15000 : 5000);
+}
 function currentSlide(n) {
+
     slideIndex = n - 1;
     showSlides();
+
     if (isPlaying) {
-        clearInterval(slideInterval);
-        slideInterval = setInterval(showSlides, 5000);
+        clearTimeout(slideInterval);
+
+        slideInterval = setTimeout(function nextSlide() {
+
+            showSlides();
+
+            if (isPlaying) {
+                slideInterval = setTimeout(nextSlide, slideIndex === 1 ? 15000 : 5000);
+            }
+
+        }, slideIndex === 1 ? 15000 : 5000);
     }
 }
 
-/* Start immediately */
-startSlideshow();
+/* ===== PLAY / PAUSE ===== */
 
-/* ===== VIDEO POPUP ===== */
+function toggleSlideshow() {
+
+    if (isPlaying) {
+
+        clearInterval(slideInterval);
+        isPlaying = false;
+
+    } else {
+
+        startSlideshow();
+        isPlaying = true;
+
+    }
+}
+
+
+/* ===== THUMBNAIL NAVIGATION ===== */
+
+function currentSlide(n) {
+
+    slideIndex = n - 1;
+
+    showSlides();
+
+    if (isPlaying) {
+
+        clearInterval(slideInterval);
+
+        slideInterval = setInterval(showSlides, 5000);
+
+    }
+}
+
+
+/* ===== TEACHER VIDEO ===== */
+
+const teacherVideo = document.getElementById("teacherVideo");
+
+teacherVideo.addEventListener("click", function() {
+
+    if (teacherVideo.paused) {
+
+        teacherVideo.play();
+
+    } else {
+
+        teacherVideo.pause();
+
+    }
+
+});
+
+
+/* ===== EXISTING VIDEO SLIDE ===== */
+
 const videoSlide = document.getElementById("videoSlide");
 
-videoSlide.addEventListener("click", () => {
+videoSlide.addEventListener("click", function() {
+
     window.open(
         './videos/english.mp4',
         'videoWindow',
         'width=640,height=360,resizable=yes'
     );
+
 });
+
+
+/* ===== START IMMEDIATELY ===== */
+
+startSlideshow();
+
 </script>
 
 </body>
 </html>
-
-
-
